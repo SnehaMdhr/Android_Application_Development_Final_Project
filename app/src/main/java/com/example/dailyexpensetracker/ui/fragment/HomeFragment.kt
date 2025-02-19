@@ -45,6 +45,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = TransactionAdapter(requireContext(), ArrayList())
+//        adapter = TransactionAdapter(requireContext(), ArrayList())
 
         val repo = TransactionRepositoryImpl()
         transactionViewModel = TransactionViewModel(repo)
