@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "235195973113",
+    "project_id": "daily-expenses-tracker-bb762",
+    "storage_bucket": "daily-expenses-tracker-bb762.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235195973113:android:420a3180f42211e467d128",
+        "android_client_info": {
+          "package_name": "com.example.dailyexpensetracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOIaLmQ3_eMq1LQkfbPtbO1a-RMb4u2GA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
