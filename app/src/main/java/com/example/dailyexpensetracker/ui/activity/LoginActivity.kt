@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
                     success,message->
                 if(success){
                     Toast.makeText(this@LoginActivity,message, Toast.LENGTH_LONG).show()
-                    var intent = Intent(this@LoginActivity,EditProfileActivity::class.java)
+                    var intent = Intent(this@LoginActivity,DashboardActivity::class.java)
                     startActivity(intent)
                     finish()
                 }else{
@@ -45,6 +45,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.register.setOnClickListener{
             val intent = Intent(this@LoginActivity,RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.forget.setOnClickListener{
+            val intent = Intent(this@LoginActivity,ForgetPasswordActivity::class.java)
             startActivity(intent)
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

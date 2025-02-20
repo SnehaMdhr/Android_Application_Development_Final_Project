@@ -48,7 +48,12 @@ class TransactionAdapter(val context: Context, var data: ArrayList<TransactionMo
         notifyDataSetChanged()
     }
 
+
+
     fun getTransactionId(position: Int): String {
         return data[position].transactionId
     }
+
+
+
 }

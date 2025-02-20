@@ -41,7 +41,12 @@ class ProfileFragment : Fragment() {
             userViewModel.getUserFromDatabase(it?.uid.toString())
         }
 
-        userViewModel.userData.observe(requireActivity()) { users -> }
+        userViewModel.userData.observe(viewLifecycleOwner) { user ->
+            user?.let {
+                binding.profileName.text = it.username
+                binding.profileEmail.text = it.email
+            }
+        }
 
         binding.editProfile.setOnClickListener {
             val intent = Intent(requireContext(), EditProfileActivity::class.java)

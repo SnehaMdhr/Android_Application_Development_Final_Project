@@ -42,11 +42,11 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun updateUserProfile() {
-        val firstName = binding.editName.text.toString().trim()
+        val username = binding.editName.text.toString().trim()
         val address = binding.editAddress.text.toString().trim()
         val email = binding.editEmail.text.toString().trim()
 
-        if (firstName.isEmpty() || address.isEmpty() || email.isEmpty()) {
+        if (username.isEmpty() || address.isEmpty() || email.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             return
         }
@@ -55,7 +55,7 @@ class EditProfileActivity : AppCompatActivity() {
         if (currentUser != null) {
             val userId = currentUser.uid
             val updateData = mutableMapOf<String, Any>(
-                "firstName" to firstName,
+                "username" to username,
                 "address" to address,
                 "email" to email
             )

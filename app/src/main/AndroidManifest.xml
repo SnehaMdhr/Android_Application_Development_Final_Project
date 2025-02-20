@@ -13,24 +13,19 @@
         android:theme="@style/Theme.DailyExpenseTracker"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.UpdateTransactionActivity"
-            android:exported="false">
+            android:name=".ui.activity.ForgetPasswordActivity"
+            android:exported="false" >
 
         </activity>
+        <activity
+            android:name=".ui.activity.UpdateTransactionActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".ui.activity.AddTransactionActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".ui.activity.DashboardActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".ui.activity.EditProfileActivity"
             android:exported="false" />
