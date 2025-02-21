@@ -52,8 +52,8 @@ class HomeFragment : Fragment() {
 
         transactionViewModel.getAllTransaction()
 
-        transactionViewModel.alltransactions.observe(viewLifecycleOwner) { product ->
-            product?.let {
+        transactionViewModel.alltransactions.observe(viewLifecycleOwner) { transaction ->
+            transaction?.let {
                 adapter.updateData(it)
             }
         }
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val transactionid = adapter.getProductId(viewHolder.adapterPosition)
+                val transactionid = adapter.getTransactionId(viewHolder.adapterPosition)
 
                 transactionViewModel.deleteTransaction(transactionid) { success, message ->
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

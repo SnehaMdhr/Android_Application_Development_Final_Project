@@ -18,12 +18,14 @@ class UpdateTransactionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        binding =ActivityUpdateTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val repo=TransactionRepositoryImpl()
         transactionViewModel = TransactionViewModel(repo)
 
-        var transactionId : String? = intent.getStringExtra("transactionIs")
+        var transactionId : String? = intent.getStringExtra("transactionId")
         transactionViewModel.getTransactionbyId(transactionId.toString())
         transactionViewModel.transactions.observe(this){
             binding.updateAmount.setText(it?.amount.toString())

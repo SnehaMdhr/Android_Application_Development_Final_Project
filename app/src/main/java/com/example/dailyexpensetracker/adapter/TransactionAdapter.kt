@@ -9,11 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyexpensetracker.R
 import com.example.dailyexpensetracker.model.TransactionModel
+import com.example.dailyexpensetracker.ui.activity.UpdateTransactionActivity
 
 class TransactionAdapter(val context: Context, var data: ArrayList<TransactionModel>): RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
     class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tName: TextView = itemView.findViewById(R.id.displayName)
         val tAmount: TextView = itemView.findViewById(R.id.displayAmount)
+        val editButtom : TextView=itemView.findViewById(R.id.lblEdit)
 
     }
 
@@ -32,21 +34,21 @@ class TransactionAdapter(val context: Context, var data: ArrayList<TransactionMo
         holder.tAmount.text = data[position].amount.toString()
 
 
-//        holder.editButtom.setOnClickListener{
-//            val intent = Intent(context,UpdateProductActivity::class.java)
-//            intent.putExtra("productId",data[position].productId)
-//            context.startActivity(intent)
-//
-//        }
+        holder.editButtom.setOnClickListener{
+            val intent = Intent(context,UpdateTransactionActivity::class.java)
+            intent.putExtra("transactionId",data[position].transactionId)
+            context.startActivity(intent)
+
+        }
     }
 
-    fun updateData(products: List<TransactionModel>) {
+    fun updateData(transactions: List<TransactionModel>) {
         data.clear()
-        data.addAll(products)
+        data.addAll(transactions)
         notifyDataSetChanged()
     }
 
-    fun getProductId(position: Int): String {
+    fun getTransactionId(position: Int): String {
         return data[position].transactionId
     }
 }

@@ -22,4 +22,5 @@ interface TransactionRepository {
     fun getAllTransaction(callback:
                               (List<TransactionModel>?, Boolean,
                                String) -> Unit)
+
 }
