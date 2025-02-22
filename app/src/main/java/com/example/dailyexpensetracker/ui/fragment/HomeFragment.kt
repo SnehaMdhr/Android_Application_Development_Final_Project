@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
 
     lateinit var transactionViewModel: TransactionViewModel
-
+    lateinit var userViewModel: UserViewModel
     lateinit var adapter: TransactionAdapter
 
     override fun onCreateView(
@@ -55,8 +55,14 @@ class HomeFragment : Fragment() {
         transactionViewModel.alltransactions.observe(viewLifecycleOwner) { transaction ->
             transaction?.let {
                 adapter.updateData(it)
+
+                val totalExpense = calculateTotalExpense(it)
+                binding.expense.text = "$$totalExpense"
             }
         }
+
+
+        
 
 //        t.loadingState.observe(viewLifecycleOwner) { loading ->
 //            binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
@@ -93,5 +99,16 @@ class HomeFragment : Fragment() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun calculateTotalExpense(transactions: List<TransactionModel>): Int {
+        var total = 0
+        for (transaction in transactions) {
+            // Ensure that we are adding only expense transactions (e.g., "expense" type)
+
+                total += transaction.amount
+
+        }
+        return total
     }
 }
