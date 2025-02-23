@@ -10,11 +10,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.dailyexpensetracker.R
 import com.example.dailyexpensetracker.databinding.ActivityLoginBinding
 import com.example.dailyexpensetracker.repository.UserRepositoryImpl
+import com.example.dailyexpensetracker.utils.LoadingUtils
 import com.example.dailyexpensetracker.viewmodel.UserViewModel
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     lateinit var userViewModel: UserViewModel
+    lateinit var loadingUtils: LoadingUtils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,9 +25,10 @@ class LoginActivity : AppCompatActivity() {
         var repo = UserRepositoryImpl()
         userViewModel = UserViewModel(repo)
 
-
+        loadingUtils = LoadingUtils(this)
 
         binding.loginBtn.setOnClickListener {
+            loadingUtils.show()
             var email :String = binding.loginEmail.text.toString()
             var password :String = binding.loginPassword.text.toString()
 
@@ -33,12 +36,13 @@ class LoginActivity : AppCompatActivity() {
                     success,message->
                 if(success){
                     Toast.makeText(this@LoginActivity,message, Toast.LENGTH_LONG).show()
+                    loadingUtils.dismiss()
                     var intent = Intent(this@LoginActivity,DashboardActivity::class.java)
                     startActivity(intent)
                     finish()
                 }else{
                     Toast.makeText(applicationContext,message, Toast.LENGTH_LONG).show()
-
+                    loadingUtils.dismiss()
                 }
             }
         }

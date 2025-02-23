@@ -12,13 +12,14 @@ import com.example.dailyexpensetracker.databinding.ActivityRegisterBinding
 import com.example.dailyexpensetracker.model.UserModel
 import com.example.dailyexpensetracker.repository.UserRepository
 import com.example.dailyexpensetracker.repository.UserRepositoryImpl
+import com.example.dailyexpensetracker.utils.LoadingUtils
 import com.example.dailyexpensetracker.viewmodel.UserViewModel
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
 
     lateinit var userViewModel: UserViewModel
-
+    lateinit var loadingUtils: LoadingUtils
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,8 +31,9 @@ class RegisterActivity : AppCompatActivity() {
 
         userViewModel = UserViewModel(userRepository)
 
-
+        loadingUtils = LoadingUtils(this)
         binding.registerBtn.setOnClickListener {
+            loadingUtils.show()
             var email: String = binding.registerEmail.text.toString()
             var password: String = binding.registerPassword.text.toString()
             var name: String = binding.registerName.text.toString()
@@ -48,6 +50,7 @@ class RegisterActivity : AppCompatActivity() {
                     )
                     addUser(userModel)
                 }else{
+                    loadingUtils.dismiss()
                     Toast.makeText(this@RegisterActivity,
                         message, Toast.LENGTH_SHORT).show()
                 }
@@ -76,6 +79,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this@RegisterActivity
                     ,message,Toast.LENGTH_SHORT).show()
             }
+            loadingUtils.dismiss()
         }
     }
 }
