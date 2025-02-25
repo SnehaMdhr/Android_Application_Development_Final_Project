@@ -1,32 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/light_pink"
     tools:context=".ui.activity.UpdateTransactionActivity">
+
+    <TextView
+        android:id="@+id/upd"
+        android:layout_width="246dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="184dp"
+        android:text="Update Transactions"
+        android:textColor="@color/dark_purple"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/updateTransaction"
-        android:hint="Enter product name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="340dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="39dp"
+        android:background="@drawable/rounded_input"
+        android:hint="  Enter Updated name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upd" />
 
     <EditText
         android:id="@+id/updateAmount"
-        android:hint="Enter product price"
+        android:layout_width="340dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="39dp"
+        android:background="@drawable/rounded_input"
+        android:hint="  Enter Updated price"
         android:inputType="numberDecimal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateTransaction" />
 
     <Button
         android:id="@+id/btnUpdateTransaction"
-        android:text="Update"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/rounded_input"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateAmount" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
