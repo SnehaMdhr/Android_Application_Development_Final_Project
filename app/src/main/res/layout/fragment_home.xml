@@ -79,7 +79,7 @@
                     android:id="@+id/budget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="400"
+                    android:text="1000"
                     android:textStyle="bold"
                     android:textSize="28sp"
                     />
@@ -147,7 +147,6 @@
 
 
     <!-- Progress Bar -->
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
@@ -159,7 +158,6 @@
         app:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerview"

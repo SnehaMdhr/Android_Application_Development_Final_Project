@@ -27,17 +27,15 @@ class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
 
     lateinit var transactionViewModel: TransactionViewModel
-    lateinit var userViewModel: UserViewModel
     lateinit var adapter: TransactionAdapter
+
+    private val budget = 1000 // Static budget
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(
-            inflater,
-            container, false
-        )
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,28 +43,25 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = TransactionAdapter(requireContext(), ArrayList())
-//        adapter = TransactionAdapter(requireContext(), ArrayList())
 
         val repo = TransactionRepositoryImpl()
         transactionViewModel = TransactionViewModel(repo)
 
         transactionViewModel.getAllTransaction()
 
-        transactionViewModel.alltransactions.observe(viewLifecycleOwner) { transaction ->
-            transaction?.let {
+        transactionViewModel.alltransactions.observe(viewLifecycleOwner) { transactions ->
+            transactions?.let {
                 adapter.updateData(it)
 
                 val totalExpense = calculateTotalExpense(it)
+                val balance = budget - totalExpense // Balance calculation
+
+                // Update UI
+                binding.budget.text = "$$budget"
                 binding.expense.text = "$$totalExpense"
+                binding.balance.text = "$$balance"
             }
         }
-
-
-        
-
-//        t.loadingState.observe(viewLifecycleOwner) { loading ->
-//            binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
-//        }
 
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
@@ -81,9 +76,8 @@ class HomeFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val transactionid = adapter.getTransactionId(viewHolder.adapterPosition)
-
-                transactionViewModel.deleteTransaction(transactionid) { success, message ->
+                val transactionId = adapter.getTransactionId(viewHolder.adapterPosition)
+                transactionViewModel.deleteTransaction(transactionId) { success, message ->
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -93,21 +87,12 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), AddTransactionActivity::class.java)
             startActivity(intent)
         }
-
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     private fun calculateTotalExpense(transactions: List<TransactionModel>): Int {
         var total = 0
         for (transaction in transactions) {
-            // Ensure that we are adding only expense transactions (e.g., "expense" type)
-
-                total += transaction.amount
-
+            total += transaction.amount
         }
         return total
     }

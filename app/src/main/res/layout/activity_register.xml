@@ -70,28 +70,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/registerConfirmPw"-->
-    <!--        android:layout_width="347dp"-->
-    <!--        android:layout_height="49dp"-->
-    <!--        android:layout_marginStart="20dp"-->
-    <!--        android:layout_marginTop="23dp"-->
-    <!--        android:layout_marginEnd="44dp"-->
-    <!--        android:ems="10"-->
-    <!--        android:hint="Re Enter your Password"-->
-    <!--        android:inputType="textPassword"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />-->
-
-    <!--        app:layout_constraintTop_toBottomOf="@+id/registerConfirmPw" />-->
+    <EditText
+        android:id="@+id/budget"
+        android:layout_width="340dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="39dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:hint="  Enter your Budget"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerAddress" />
 
     <Button
         android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="55dp"
         android:background="@drawable/rounded_button"
         android:text="Register"
