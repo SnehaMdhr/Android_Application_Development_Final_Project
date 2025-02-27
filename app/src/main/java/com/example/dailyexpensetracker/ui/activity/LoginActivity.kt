@@ -2,6 +2,7 @@ package com.example.dailyexpensetracker.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,8 @@ class LoginActivity : AppCompatActivity() {
                     loadingUtils.dismiss()
                     var intent = Intent(this@LoginActivity,DashboardActivity::class.java)
                     startActivity(intent)
+                    binding.instrumentedCheck.text = "Login success"
+                    binding.instrumentedCheck.visibility = View.GONE
                     finish()
                 }else{
                     Toast.makeText(applicationContext,message, Toast.LENGTH_LONG).show()

@@ -1,5 +1,6 @@
 package com.example.dailyexpensetracker
 
+import com.example.dailyexpensetracker.repository.UserRepositoryImpl
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

@@ -23,12 +23,12 @@ class LoginInstrumentedTest {
 
     @Test
     fun checkLogin() {
-        onView(withId(R.id.editEmail)).perform(
-            typeText("sandis@gmail.com")
+        onView(withId(R.id.loginEmail)).perform(
+            typeText("snehamanandhar54@gmail.com")
         )
 
         onView(withId(R.id.loginPassword)).perform(
-            typeText("password")
+            typeText("987654321")
         )
 
         closeSoftKeyboard()
