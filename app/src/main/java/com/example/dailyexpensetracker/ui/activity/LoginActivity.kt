@@ -40,8 +40,8 @@ class LoginActivity : AppCompatActivity() {
                     loadingUtils.dismiss()
                     var intent = Intent(this@LoginActivity,DashboardActivity::class.java)
                     startActivity(intent)
-                    binding.instrumentedCheck.text = "Login success"
-                    binding.instrumentedCheck.visibility = View.GONE
+                    binding.displayLogin.text ="login success"
+                    binding.displayLogin.visibility = View.GONE
                     finish()
                 }else{
                     Toast.makeText(applicationContext,message, Toast.LENGTH_LONG).show()

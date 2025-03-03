@@ -59,10 +59,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test:rules:1.5.0")
+    androidTestImplementation("androidx.test:runner:1.2.0")
+    androidTestImplementation("androidx.test:rules:1.2.0")
+    androidTestImplementation ("org.mockito.kotlin:mockito-kotlin:5.2.0")
 
     testImplementation("org.mockito:mockito-core:5.6.0")
+    testImplementation("org.mockito:mockito-inline:3.12.4")
+
+
 
 
 }
